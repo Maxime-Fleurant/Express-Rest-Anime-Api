@@ -1,0 +1,29 @@
+version: "3.7"
+
+services :
+
+  postgresql:
+    image: postgres
+    environment: 
+      POSTGRES_USER: excel
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: anidb
+    ports: 
+      - "5432:5432"
+
+  mongodb:
+    image: mongo
+    environment: 
+      MONGO_INITDB_ROOT_USERNAME: excel
+      MONGO_INITDB_ROOT_PASSWORD: pass
+    ports: 
+      - "27017:27017"
+
+  neo4j:
+    image: neo4j
+    environment: 
+      NEO4J_AUTH : neo4j/pass
+    ports: 
+      - "7474:7474"
+      - "7687:7687"
+
