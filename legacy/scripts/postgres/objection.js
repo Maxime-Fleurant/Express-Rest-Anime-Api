@@ -13,13 +13,12 @@ const Theme = require('./models/theme');
 const knex = Knex(development);
 Model.knex(knex);
 
-const helper = async (tags) => {
+const helper = async tags => {
   const tagsMapping = await Tag.mapExistingTag(tags);
 
   const themesMapping = await Theme.mapExistingTheme([...new Set(tags.map(el => el.category))]);
 
   const finalTags = tagsMapping.map(tag => {
-
     const matchTheme = themesMapping.find(theme => theme.name === tag.category);
     const { category, ...currentTag } = tag;
 
