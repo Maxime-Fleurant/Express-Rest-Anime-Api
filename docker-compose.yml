@@ -8,6 +8,16 @@ services:
       POSTGRES_PASSWORD: pass
     ports:
       - '5432:5432'
+
+  apipostgres:
+    build:
+      context: ./api_postgres
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - 'app/node_modules'
+      - './api_postgres:/app'
   # mongodb:
   #   image: mongo
   #   environment:
