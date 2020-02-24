@@ -8,7 +8,7 @@ export default app => {
   app.use('/api', api());
 
   app.use((err, req, res, next) => {
-    console.log('fdlk');
+    console.log(err);
     res.send(err);
   });
 };

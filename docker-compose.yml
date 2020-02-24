@@ -10,6 +10,8 @@ services:
       - '5432:5432'
 
   apipostgres:
+    depends_on:
+      - postgresql
     build:
       context: ./api_postgres
       dockerfile: Dockerfile.dev
