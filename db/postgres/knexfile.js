@@ -1,12 +1,12 @@
-export default {
-  dev: {
-    client: 'postgresql',
+module.exports = {
+  development: {
+    client: 'pg',
     connection: {
-      database: 'anidb',
+      host: 'postgresql',
       user: 'anidb',
       password: 'pass',
-      host: 'localhost',
-      port: '5432'
+      database: 'anidb',
+      port: 5432
     }
   }
 };
