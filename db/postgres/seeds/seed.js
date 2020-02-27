@@ -1,8 +1,13 @@
-exports.seed = function(knex) {
-  return knex('genre')
+exports.seed = async function(knex) {
+  const genre = await knex('genre')
     .del()
     .then(function() {
-      // Inserts seed entries
-      return knex('genre').insert([{ name: 'dsdmlfk' }, { name: 'dd' }]);
+      return knex('genre')
+        .returning('id')
+        .insert([
+          { name: 'dsdmlfk', id: 1 },
+          { name: 'dsdmddlfk', id: 2 }
+        ]);
     });
+  console.log(genre);
 };
