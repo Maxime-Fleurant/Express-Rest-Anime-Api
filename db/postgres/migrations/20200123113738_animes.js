@@ -35,7 +35,7 @@ exports.up = knex => {
       table.bigIncrements('id').primary();
       table.string('name').unique();
     })
-    .createTable('genre', table => {
+    .createTable('genres', table => {
       table.bigIncrements('id').primary();
       table.string('name').unique();
     })
@@ -45,6 +45,7 @@ exports.up = knex => {
         .bigInteger('animeId')
         .references('id')
         .inTable('animes')
+        .notNullable()
         .onDelete('CASCADE');
       table.string('site').notNullable();
       table.string('url').notNullable();
@@ -105,7 +106,7 @@ exports.up = knex => {
       table
         .bigInteger('genreId')
         .references('id')
-        .inTable('genre')
+        .inTable('genres')
         .onDelete('CASCADE');
     });
 };
