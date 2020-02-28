@@ -1,13 +1,18 @@
+const path = require('path');
+const csvtojson = require('csvtojson');
+
 exports.seed = async function(knex) {
-  const genre = await knex('genre')
+  const studios = await csvtojson().fromFile(path.join(__dirname, '../datasets/studio.csv'));
+  const animes = await csvtojson().fromFile(path.join(__dirname, '../datasets/anime.csv'));
+  await knex('studios')
     .del()
     .then(function() {
-      return knex('genre')
-        .returning('id')
-        .insert([
-          { name: 'dsdmlfk', id: 1 },
-          { name: 'dsdmddlfk', id: 2 }
-        ]);
+      return knex('studios').insert(studios);
     });
-  console.log(genre);
+
+  await knex('animes')
+    .del()
+    .then(function() {
+      return knex('animes').insert(animes);
+    });
 };

@@ -12,7 +12,7 @@ exports.up = knex => {
         .bigIncrements('id')
         .unique()
         .primary();
-      table.string('romanjiTitle');
+      table.string('romajiTitle');
       table.string('englishTitle');
       table.string('nativeTitle');
       table.text('description');
@@ -21,6 +21,7 @@ exports.up = knex => {
       table.string('largeCover');
       table.string('mediumCover');
       table.integer('popularity');
+      table.integer('nbEpisodes');
       table.date('startDate');
       table.date('endDate');
       table.specificType('avgScore', 'smallInt');

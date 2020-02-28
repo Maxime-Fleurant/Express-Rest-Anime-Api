@@ -1,5 +1,8 @@
-const faker = require('faker');
+const csvtojson = require('csvtojson');
 
-for (let i = 0; i < 100; i++) {
-  console.log(faker.random.number());
-}
+const start = async () => {
+  const jsonObjs = await csvtojson().fromFile('./anime.csv');
+  console.log(jsonObjs);
+};
+
+start();

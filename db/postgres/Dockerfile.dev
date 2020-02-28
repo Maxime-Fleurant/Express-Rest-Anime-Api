@@ -2,8 +2,8 @@ FROM node
 
 WORKDIR /app
 
+COPY ./package.json .
 
+RUN ["npm", "install"]
 
-RUN ["npm", "install", "knex", "pg"]
-
-CMD ["knex", "migrate:latest"]
+CMD ["npm", "start"]
