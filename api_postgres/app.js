@@ -8,7 +8,7 @@ const startServer = async () => {
 
   await loader(app);
 
-  app.listen(config);
+  app.listen(config.port);
 };
 
 startServer();

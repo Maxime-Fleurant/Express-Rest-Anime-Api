@@ -19,8 +19,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - 'app/node_modules'
       - './api_postgres:/app'
+      - 'app/node_modules'
 
   migrate-postgres:
     depends_on:
@@ -30,8 +30,9 @@ services:
       dockerfile: Dockerfile.dev
     command: ./wait-for-it.sh postgresql:5432 -- npm start
     volumes:
-      - 'app/node_modules'
-      - './db/postgres:/app'
+      - './db/postgres/datasets:/app/datasets'
+      - './db/postgres/migrations:/app/migrations'
+      - './db/postgres/seeds:/app/seeds'
       # mongodb:
   #   image: mongo
   #   environment:
