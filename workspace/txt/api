@@ -1,0 +1,13 @@
+/animes
+/animes/:id/genres
+/animes/:id/genres/:id
+/animes/:id/studios
+/animes/:id/tags
+/animes/:id/tags/:id/themes
+/animes/:id/tags/:id/themes/:id
+/animes/:id/externalLinks
+/animes/:id/externalLinks/:id
+/animes/:id/reviews
+/animes/:id/reviews/:id
+/animes/:id/character
+/animes/:id/character/:id

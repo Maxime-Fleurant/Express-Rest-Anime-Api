@@ -35,9 +35,7 @@ const helper = async tags => {
     const currentTag = { ...cur };
 
     if (!currentTag.id) {
-      const similarTheme = acc.find(
-        accTag => !accTag.id && accTag.theme.name === currentTag.theme.name
-      );
+      const similarTheme = acc.find(accTag => !accTag.id && accTag.theme.name === currentTag.theme.name);
 
       if (!similarTheme) {
         currentTag.theme['#id'] = currentTag.theme.name;
