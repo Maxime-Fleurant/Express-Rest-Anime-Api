@@ -1,19 +1,19 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 
-import { animesService } from '../../services';
+import { externalLink } from '../../services';
 
 export default api => {
   const route = Router();
 
-  api.use('/animes', route);
+  api.use('/external-links', route);
 
   route.get(
     '/',
     asyncHandler(async (req, res) => {
-      const animesList = await animesService.getAnimes();
+      const externalLinks = await externalLink.getAnimes();
 
-      return res.json(animesList);
+      return res.json(externalLinks);
     })
   );
 
@@ -22,9 +22,9 @@ export default api => {
     asyncHandler(async (req, res) => {
       const { id } = req.params;
 
-      const anime = await animesService.getAnimeById(id);
+      const externalLink = await externalLink.getAnimeById(id);
 
-      return res.json(anime);
+      return res.json(externalLink);
     })
   );
 };

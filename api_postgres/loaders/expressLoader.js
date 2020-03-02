@@ -7,6 +7,11 @@ export default app => {
 
   app.use('/api', api());
 
+  app.use((req, res, next) => {
+    console.log('not found');
+    res.send('404');
+  });
+
   app.use((err, req, res, next) => {
     console.log(err);
     res.send(err);

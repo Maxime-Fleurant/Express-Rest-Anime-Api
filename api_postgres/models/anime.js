@@ -18,7 +18,7 @@ class Anime extends Model {
             from: 'animes_genres.animeId',
             to: 'animes_genres.genreId'
           },
-          to: 'genre.id'
+          to: 'genres.id'
         }
       },
       tags: {

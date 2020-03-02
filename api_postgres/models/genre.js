@@ -4,7 +4,7 @@ import { Model } from 'objection';
 
 class Genre extends Model {
   static get tableName() {
-    return 'genre';
+    return 'genres';
   }
 
   static get relationMappings() {
