@@ -2,14 +2,14 @@ import ExternalLink from '../models/externalLink';
 
 export default {
   getExternalLinks: async () => {
-    const ExternalLinks = await ExternalLink.query();
+    const externalLinks = await ExternalLink.query();
 
-    return ExternalLinks;
+    return externalLinks;
   },
 
   getExternalLinksById: async id => {
-    const anime = await ExternalLink.query().findById(id);
+    const externalLink = await ExternalLink.query().findById(id);
 
-    return anime;
+    return externalLink;
   }
 };

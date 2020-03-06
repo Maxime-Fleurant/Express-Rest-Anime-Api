@@ -8,7 +8,7 @@ class Theme extends Model {
   }
 
   static get relationMappings() {
-    const Tag = path.join(__dirname, 'genre');
+    const Tag = path.join(__dirname, 'tag');
 
     return {
       tags: {

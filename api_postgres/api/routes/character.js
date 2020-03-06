@@ -1,19 +1,19 @@
 import { Router } from 'express';
 import asyncHandler from 'express-async-handler';
 
-import { externalLinksService } from '../../services';
+import { characterService } from '../../services';
 
 export default api => {
   const route = Router();
 
-  api.use('/external-links', route);
+  api.use('/characters', route);
 
   route.get(
     '/',
     asyncHandler(async (req, res) => {
-      const externalLinks = await externalLinksService.getExternalLinks();
+      const characters = await characterService.getCharacters();
 
-      return res.json(externalLinks);
+      return res.json(characters);
     })
   );
 
@@ -22,9 +22,9 @@ export default api => {
     asyncHandler(async (req, res) => {
       const { id } = req.params;
 
-      const externalLink = await externalLinksService.getExternalLinksById(id);
+      const character = await characterService.getCharacterById(id);
 
-      return res.json(externalLink);
+      return res.json(character);
     })
   );
 };
