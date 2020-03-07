@@ -19,5 +19,11 @@ export default {
     const externalLink = await ExternalLink.query().insert({ animeId, site, url });
 
     return externalLink;
+  },
+
+  updateExternalLink: async (id, data) => {
+    const externalLink = await ExternalLink.query().patchAndFetchById(id, data);
+
+    return externalLink;
   }
 };

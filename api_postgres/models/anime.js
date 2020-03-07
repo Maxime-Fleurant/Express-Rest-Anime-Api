@@ -24,12 +24,9 @@ class Anime extends Model {
         mediumCover: { type: 'string' },
         popularity: { type: 'number' },
         avgScore: { type: 'number' },
-        studioId: { type: 'number' },
-        genres: { type: 'array' },
-        tags: { type: 'string' },
-        externalLinks: { type: 'string' },
-        characters: { type: 'string' }
-      }
+        studioId: { type: 'string' }
+      },
+      required: ['romajiTitle', 'description']
     };
   }
 

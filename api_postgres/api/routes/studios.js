@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 import asyncHandler from 'express-async-handler';
 
 import { studioService } from '../../services';
@@ -41,6 +42,11 @@ export default api => {
 
   route.post(
     '/',
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        name: Joi.string()
+      })
+    }),
     asyncHandler(async (req, res) => {
       const studio = await studioService.createStudio(req.body);
 

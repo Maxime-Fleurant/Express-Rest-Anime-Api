@@ -19,5 +19,11 @@ export default {
     const review = await Review.query().insert({ animeId, score, body, summary });
 
     return review;
+  },
+
+  updateReview: async (id, data) => {
+    const review = await Review.query().patchAndFetchById(id, data);
+
+    return review;
   }
 };

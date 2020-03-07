@@ -75,5 +75,57 @@ export default {
     );
 
     return anime;
+  },
+
+  updateAnime: async (id, data) => {
+    const anime = await Anime.query().patchAndFetchById(id, data);
+
+    return anime;
+  },
+
+  addGenreToAnime: async (animedId, genreId) => {
+    const animeGenres = await (await Anime.query().findById(animedId)).$relatedQuery('genres');
+
+    if (animeGenres.find(el => el.id === genreId)) {
+      return animeGenres;
+    }
+
+    const newGenre = await Anime.relatedQuery('genres')
+      .for(animedId)
+      .relate(genreId);
+
+    return newGenre;
+  },
+
+  addTagToAnime: async (animeId, tagId) => {
+    const animeGenres = await (await Anime.query().findById(animeId)).$relatedQuery('tags');
+
+    if (animeGenres.find(el => el.id === tagId)) {
+      return animeGenres;
+    }
+
+    const newTag = await Anime.relatedQuery('tags')
+      .for(animeId)
+      .relate(tagId);
+
+    return newTag;
+  },
+
+  removeGenreToAnime: async (animedId, genreId) => {
+    const newGenre = await Anime.relatedQuery('genres')
+      .for(animedId)
+      .unrelate()
+      .where('id', '=', genreId);
+
+    return newGenre;
+  },
+
+  removeTagToAnime: async (animeId, tagId) => {
+    const newTag = await Anime.relatedQuery('tags')
+      .for(animeId)
+      .unrelate()
+      .where('id', '=', tagId);
+
+    return newTag;
   }
 };

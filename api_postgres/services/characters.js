@@ -14,17 +14,13 @@ export default {
   },
 
   createCharacter: async body => {
-    const { firstName, lastName, nativeName, largeImage, mediumImage, description, animeId } = body;
+    const character = await Character.query().insert(body);
 
-    const character = await Character.query().insert({
-      firstName,
-      lastName,
-      nativeName,
-      largeImage,
-      mediumImage,
-      description,
-      animeId
-    });
+    return character;
+  },
+
+  updateCharacter: async (id, data) => {
+    const character = await Character.query().patchAndFetchById(id, data);
 
     return character;
   }

@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import { celebrate, Joi, Segments } from 'celebrate';
 import asyncHandler from 'express-async-handler';
 
 import { reviewService } from '../../services';
@@ -30,8 +31,34 @@ export default api => {
 
   route.post(
     '/',
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        score: Joi.number(),
+        body: Joi.string(),
+        summary: Joi.string(),
+        animeId: Joi.string()
+      })
+    }),
     asyncHandler(async (req, res) => {
       const review = await reviewService.createReview(req.body);
+
+      return res.json(review);
+    })
+  );
+
+  route.put(
+    '/:id',
+    celebrate({
+      [Segments.BODY]: Joi.object().keys({
+        score: Joi.number(),
+        body: Joi.string(),
+        summary: Joi.string()
+      })
+    }),
+    asyncHandler(async (req, res) => {
+      const { id } = req.params;
+
+      const review = await reviewService.updateReview(id, req.body);
 
       return res.json(review);
     })
