@@ -1,9 +1,14 @@
+import bodyParser from 'body-parser';
+
 import api from '../api';
 
 export default app => {
   app.get('/', (req, res) => {
     res.send('healt');
   });
+
+  app.use(bodyParser.urlencoded({ extended: true }));
+  app.use(bodyParser.json());
 
   app.use('/api', api());
 
@@ -13,6 +18,6 @@ export default app => {
 
   app.use((err, req, res, next) => {
     console.log(err);
-    res.send(err.name);
+    res.send(err);
   });
 };

@@ -31,25 +31,6 @@ class Tag extends Model {
       }
     };
   }
-
-  static async mapExistingTag(tags) {
-    let existingTags = await this.query().whereIn(
-      'name',
-      tags.map(el => el.name)
-    );
-
-    const filteredTag = tags.filter(tag => {
-      return !existingTags.find(exTags => exTags.name === tag.name);
-    });
-
-    existingTags = existingTags.map(tag => {
-      return {
-        id: tag.id
-      };
-    });
-
-    return [...existingTags, ...filteredTag];
-  }
 }
 
 export default Tag;

@@ -1,3 +1,4 @@
+import lodash from 'lodash';
 import Theme from '../models/theme';
 
 export default {
@@ -20,7 +21,11 @@ export default {
   },
 
   getThemeAnimes: async id => {
-    const animes = await Theme.query().console.log(animes);
+    const themesGraph = await Theme.query()
+      .findById(id)
+      .withGraphFetched('tags.animes');
+
+    const animes = lodash.uniqBy(lodash.flattenDeep(themesGraph.tags.map(el => el.animes)), 'id');
 
     return animes;
   }

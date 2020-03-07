@@ -13,17 +13,17 @@ exports.seed = async function(knex) {
   const animesTags = await csvtojson().fromFile(path.join(__dirname, '../datasets/animes_tags.csv'));
   const animesGenres = await csvtojson().fromFile(path.join(__dirname, '../datasets/animes_genres.csv'));
 
-  await knex('studios')
-    .del()
-    .then(function() {
-      return knex('studios').insert(studios);
-    });
+  // await knex('studios')
+  //   .del()
+  //   .then(function() {
+  //     return knex('studios').insert(studios);
+  //   });
 
-  await knex('animes')
-    .del()
-    .then(function() {
-      return knex('animes').insert(animes);
-    });
+  // await knex('animes')
+  //   .del()
+  //   .then(function() {
+  //     return knex('animes').insert(animes);
+  //   });
 
   await knex('themes')
     .del()
@@ -37,23 +37,23 @@ exports.seed = async function(knex) {
       return knex('genres').insert(genres);
     });
 
-  await knex('externalLinks')
-    .del()
-    .then(function() {
-      return knex('externalLinks').insert(externalLinks);
-    });
+  // await knex('externalLinks')
+  //   .del()
+  //   .then(function() {
+  //     return knex('externalLinks').insert(externalLinks);
+  //   });
 
-  await knex('reviews')
-    .del()
-    .then(function() {
-      return knex('reviews').insert(reviews);
-    });
+  // await knex('reviews')
+  //   .del()
+  //   .then(function() {
+  //     return knex('reviews').insert(reviews);
+  //   });
 
-  await knex('characters')
-    .del()
-    .then(function() {
-      return knex('characters').insert(characters);
-    });
+  // await knex('characters')
+  //   .del()
+  //   .then(function() {
+  //     return knex('characters').insert(characters);
+  //   });
 
   await knex('tags')
     .del()
@@ -61,15 +61,15 @@ exports.seed = async function(knex) {
       return knex('tags').insert(tags);
     });
 
-  await knex('animes_tags')
-    .del()
-    .then(function() {
-      return knex('animes_tags').insert(animesTags);
-    });
+  // await knex('animes_tags')
+  //   .del()
+  //   .then(function() {
+  //     return knex('animes_tags').insert(animesTags);
+  //   });
 
-  await knex('animes_genres')
-    .del()
-    .then(function() {
-      return knex('animes_genres').insert(animesGenres);
-    });
+  // await knex('animes_genres')
+  //   .del()
+  //   .then(function() {
+  //     return knex('animes_genres').insert(animesGenres);
+  //   });
 };

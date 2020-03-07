@@ -27,4 +27,13 @@ export default api => {
       return res.json(externalLink);
     })
   );
+
+  route.post(
+    '/',
+    asyncHandler(async (req, res) => {
+      const externalLink = await externalLinksService.createExternalLink(req.body);
+
+      res.json(externalLink);
+    })
+  );
 };

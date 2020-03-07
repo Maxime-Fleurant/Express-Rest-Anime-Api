@@ -11,5 +11,13 @@ export default {
     const review = await Review.query().findById(id);
 
     return review;
+  },
+
+  createReview: async postBody => {
+    const { animeId, score, body, summary } = postBody;
+
+    const review = await Review.query().insert({ animeId, score, body, summary });
+
+    return review;
   }
 };

@@ -27,4 +27,13 @@ export default api => {
       return res.json(character);
     })
   );
+
+  route.post(
+    '/',
+    asyncHandler(async (req, res) => {
+      const character = await characterService.createCharacter(req.body);
+
+      return res.send(character);
+    })
+  );
 };

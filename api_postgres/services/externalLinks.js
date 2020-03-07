@@ -11,5 +11,13 @@ export default {
     const externalLink = await ExternalLink.query().findById(id);
 
     return externalLink;
+  },
+
+  createExternalLink: async body => {
+    const { animeId, site, url } = body;
+
+    const externalLink = await ExternalLink.query().insert({ animeId, site, url });
+
+    return externalLink;
   }
 };

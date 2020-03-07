@@ -27,4 +27,13 @@ export default api => {
       return res.json(anime);
     })
   );
+
+  route.post(
+    '/',
+    asyncHandler(async (req, res) => {
+      const anime = await animesService.postAnime(req.body);
+
+      return res.json(anime);
+    })
+  );
 };

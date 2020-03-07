@@ -23,22 +23,6 @@ class Genre extends Model {
       }
     };
   }
-
-  static async mapExistingGenre(genres) {
-    const existingGenres = await this.query().whereIn('name', genres);
-
-    const filteredGenre = genres
-      .filter(genre => {
-        return !existingGenres.find(exGenre => exGenre.name === genre);
-      })
-      .map(genre => {
-        return {
-          name: genre
-        };
-      });
-
-    return [...existingGenres, ...filteredGenre];
-  }
 }
 
 export default Genre;

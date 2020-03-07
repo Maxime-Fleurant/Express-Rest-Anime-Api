@@ -17,5 +17,13 @@ export default {
     const animes = await Studio.relatedQuery('animes').for(id);
 
     return animes;
+  },
+
+  createStudio: async body => {
+    const studio = await Studio.query().insert({
+      name: body.name
+    });
+
+    return studio;
   }
 };

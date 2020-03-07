@@ -27,4 +27,13 @@ export default api => {
       return res.json(review);
     })
   );
+
+  route.post(
+    '/',
+    asyncHandler(async (req, res) => {
+      const review = await reviewService.createReview(req.body);
+
+      return res.json(review);
+    })
+  );
 };

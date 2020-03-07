@@ -22,5 +22,58 @@ export default {
       });
 
     return anime;
+  },
+
+  postAnime: async body => {
+    const {
+      romajiTitle,
+      englishTitle,
+      nativeTitle,
+      description,
+      startDate,
+      endDate,
+      nbEpisodes,
+      trailer,
+      xLargeCover,
+      largeCover,
+      mediumCover,
+      popularity,
+      avgScore,
+      studioId,
+      genres = [],
+      tags = [],
+      externalLinks = [],
+      characters = []
+    } = body;
+
+    const anime = await Anime.query().insertGraph(
+      {
+        romajiTitle,
+        englishTitle,
+        nativeTitle,
+        description,
+        startDate,
+        endDate,
+        nbEpisodes,
+        trailer,
+        xLargeCover,
+        largeCover,
+        mediumCover,
+        popularity,
+        avgScore,
+        studio: { id: studioId },
+        genres: genres.map(el => {
+          return { id: el };
+        }),
+        tags: tags.map(el => {
+          return { id: el };
+        }),
+        externalLinks: externalLinks,
+        characters: characters
+      },
+      { relate: true }
+    );
+
+    return anime;
   }
 };

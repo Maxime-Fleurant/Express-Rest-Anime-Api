@@ -21,12 +21,6 @@ class Theme extends Model {
       }
     };
   }
-
-  static async mapExistingTheme(themes) {
-    const existingThemes = await this.query().whereIn('name', themes);
-
-    return existingThemes;
-  }
 }
 
 module.exports = Theme;

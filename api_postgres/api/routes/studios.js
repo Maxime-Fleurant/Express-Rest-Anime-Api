@@ -38,4 +38,13 @@ export default api => {
       return res.json(animes);
     })
   );
+
+  route.post(
+    '/',
+    asyncHandler(async (req, res) => {
+      const studio = await studioService.createStudio(req.body);
+
+      return res.send(studio);
+    })
+  );
 };

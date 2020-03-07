@@ -7,6 +7,32 @@ class Anime extends Model {
     return 'animes';
   }
 
+  static get jsonSchema() {
+    return {
+      type: 'object',
+      properties: {
+        romajiTitle: { type: 'string' },
+        englishTitle: { type: 'string' },
+        nativeTitle: { type: 'string' },
+        description: { type: 'string' },
+        startDate: { type: 'date' },
+        endDate: { type: 'date' },
+        nbEpisodes: { type: 'number' },
+        trailer: { type: 'string' },
+        xLargeCover: { type: 'string' },
+        largeCover: { type: 'string' },
+        mediumCover: { type: 'string' },
+        popularity: { type: 'number' },
+        avgScore: { type: 'number' },
+        studioId: { type: 'number' },
+        genres: { type: 'array' },
+        tags: { type: 'string' },
+        externalLinks: { type: 'string' },
+        characters: { type: 'string' }
+      }
+    };
+  }
+
   static get relationMappings() {
     return {
       genres: {
