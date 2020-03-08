@@ -69,4 +69,15 @@ export default api => {
       return res.json(character);
     })
   );
+
+  route.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+      const { id } = req.params;
+
+      const character = await characterService.removeCharacter(id);
+
+      return res.json(character);
+    })
+  );
 };

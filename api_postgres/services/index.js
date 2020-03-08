@@ -6,6 +6,7 @@ import studioService from './studios';
 import genreService from './genres';
 import tagService from './tags';
 import themeService from './themes';
+import userService from './users';
 
 export {
   animesService,
@@ -15,5 +16,6 @@ export {
   studioService,
   genreService,
   tagService,
-  themeService
+  themeService,
+  userService
 };

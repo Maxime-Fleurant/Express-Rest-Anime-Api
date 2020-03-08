@@ -61,4 +61,15 @@ export default api => {
       return res.json(externalLink);
     })
   );
+
+  route.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+      const { id } = req.params;
+
+      const externalLink = await externalLinksService.removeExternalLink(id);
+
+      return res.json(externalLink);
+    })
+  );
 };

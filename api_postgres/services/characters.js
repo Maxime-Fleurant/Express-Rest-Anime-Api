@@ -23,5 +23,11 @@ export default {
     const character = await Character.query().patchAndFetchById(id, data);
 
     return character;
+  },
+
+  removeCharacter: async id => {
+    const anime = await Character.query().deleteById(id);
+
+    return anime;
   }
 };

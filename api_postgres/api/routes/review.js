@@ -63,4 +63,15 @@ export default api => {
       return res.json(review);
     })
   );
+
+  route.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+      const { id } = req.params;
+
+      const review = await reviewService.removeReviews(id);
+
+      return res.json(review);
+    })
+  );
 };

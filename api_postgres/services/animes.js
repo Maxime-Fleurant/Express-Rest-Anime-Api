@@ -83,6 +83,12 @@ export default {
     return anime;
   },
 
+  removeAnime: async id => {
+    const anime = await Anime.query().deleteById(id);
+
+    return anime;
+  },
+
   addGenreToAnime: async (animedId, genreId) => {
     const animeGenres = await (await Anime.query().findById(animedId)).$relatedQuery('genres');
 

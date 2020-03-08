@@ -7,7 +7,8 @@ import characterRoutes from './routes/character';
 import studioRoutes from './routes/studios';
 import genreRoutes from './routes/genres';
 import tagRoute from './routes/tags';
-import themeService from './routes/themes';
+import themeRoute from './routes/themes';
+import userRoute from './routes/user';
 
 export default () => {
   const api = Router();
@@ -19,7 +20,8 @@ export default () => {
   studioRoutes(api);
   genreRoutes(api);
   tagRoute(api);
-  themeService(api);
+  themeRoute(api);
+  userRoute(api);
 
   return api;
 };

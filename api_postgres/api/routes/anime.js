@@ -3,6 +3,7 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import asyncHandler from 'express-async-handler';
 
 import { animesService } from '../../services';
+import auth from '../middlewares/auth';
 
 export default api => {
   const route = Router();
@@ -11,6 +12,7 @@ export default api => {
 
   route.get(
     '/',
+    auth,
     asyncHandler(async (req, res) => {
       const animesList = await animesService.getAnimes();
 
@@ -31,6 +33,7 @@ export default api => {
 
   route.post(
     '/',
+    auth,
     celebrate({
       [Segments.BODY]: Joi.object().keys({
         romajiTitle: Joi.string(),
@@ -98,6 +101,17 @@ export default api => {
       const { id } = req.params;
 
       const anime = await animesService.updateAnime(id, req.body);
+
+      return res.json(anime);
+    })
+  );
+
+  route.delete(
+    '/:id',
+    asyncHandler(async (req, res) => {
+      const { id } = req.params;
+
+      const anime = await animesService.removeAnime(id);
 
       return res.json(anime);
     })

@@ -39,6 +39,11 @@ exports.up = knex => {
       table.bigIncrements('id').primary();
       table.string('name').unique();
     })
+    .createTable('users', table => {
+      table.bigIncrements('id').primary();
+      table.string('email').unique();
+      table.string('password');
+    })
     .createTable('externalLinks', table => {
       table.bigIncrements('id').primary();
       table

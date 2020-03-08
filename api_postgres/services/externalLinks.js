@@ -25,5 +25,11 @@ export default {
     const externalLink = await ExternalLink.query().patchAndFetchById(id, data);
 
     return externalLink;
+  },
+
+  removeExternalLink: async id => {
+    const externalLink = await ExternalLink.query().deleteById(id);
+
+    return externalLink;
   }
 };

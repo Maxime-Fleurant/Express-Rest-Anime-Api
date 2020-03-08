@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-
+import cookieParser from 'cookie-parser';
 import api from '../api';
 
 export default app => {
@@ -9,6 +9,7 @@ export default app => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(cookieParser());
 
   app.use('/api', api());
 
@@ -17,7 +18,7 @@ export default app => {
   });
 
   app.use((err, req, res, next) => {
-    console.log(err);
+    console.log(err, 'error trigger');
     res.send(err);
   });
 };

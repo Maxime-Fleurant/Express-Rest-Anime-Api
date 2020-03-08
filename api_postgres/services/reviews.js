@@ -25,5 +25,11 @@ export default {
     const review = await Review.query().patchAndFetchById(id, data);
 
     return review;
+  },
+
+  removeReviews: async id => {
+    const review = await Review.query().deleteById(id);
+    console.log('fldk');
+    return review;
   }
 };
