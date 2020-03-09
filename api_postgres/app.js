@@ -7,7 +7,6 @@ const startServer = async () => {
   const app = express();
 
   await loader(app);
-  console.log('fdlk');
 
   app.listen(config.port);
 };
